@@ -26,7 +26,7 @@ const params = {
     resolution: { value: new THREE.Vector2(w, h) },
 }
 
-function addObject() {
+function addPlane() {
     const planeGeometry = new THREE.PlaneGeometry(1, 1);
     const planeMaterial = new THREE.ShaderMaterial({
         vertexShader: vertex,
@@ -35,7 +35,7 @@ function addObject() {
             iTime: params.time,
             iResolution: params.resolution,
         },
-
+        side: THREE.DoubleSide
     });
 
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
@@ -86,7 +86,7 @@ function onWindowResize() {
 }
 
 function run() {
-    addObject();
+    addPlane();
     addLight();
     animate();
     window.addEventListener("resize", onWindowResize);
