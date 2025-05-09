@@ -8,7 +8,9 @@ let h = window.innerHeight;
 
 const scene = new THREE.Scene();
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+});
 renderer.setSize(w, h);
 renderer.setAnimationLoop(animate);
 document.body.appendChild(renderer.domElement);
@@ -35,7 +37,8 @@ function addPlane() {
             iTime: params.time,
             iResolution: params.resolution,
         },
-        side: THREE.DoubleSide
+        side: THREE.DoubleSide,
+        transparent: true,
     });
 
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
